@@ -10,10 +10,10 @@ O sistema é composto por Ledger API, Balance API, Azure Service Bus, Function d
 
 O registro do lançamento é síncrono. A consolidação do saldo é assíncrona, com consistência eventual.
 
-![Containers](docs/architecture/out/png/containers.png)
-![Ledger](docs/architecture/out/png/entryApiComponents.png)
-![Consolidação](docs/architecture/out/png/consolidationJobComponents.png)
-![Balance](docs/architecture/out/png/reportApiComponents.png)
+![Containers](docs/images/containers.png)
+![Ledger](docs/images/entryApiComponents.png)
+![Consolidação](docs/images/consolidationJobComponents.png)
+![Balance](docs/images/reportApiComponents.png)
 
 As fontes LikeC4 estão em `docs/architecture`. Para exportar os PNGs:
 
@@ -75,16 +75,8 @@ docker build -f src/01.Presentation/CashFlow.Balance.Api/Dockerfile -t cashflow-
 docker run --rm -p 8082:8080 cashflow-balance-api
 ```
 
-## Evoluções futuras
-
-- Autenticação com Microsoft Entra ID
-- Azure SQL e Azure Service Bus configurados por ambiente
-- Provisionamento de infraestrutura no Azure
-
 ## Testes
 
 ```powershell
 dotnet test CashFlow.sln
 ```
-
-Consulte `docs/operacao-e-resiliencia.md` para detalhes sobre Outbox, Inbox e reprocessamento.
