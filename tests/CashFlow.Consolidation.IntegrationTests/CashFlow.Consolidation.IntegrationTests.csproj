@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\05.Functions\CashFlow.Consolidation.Function\CashFlow.Consolidation.Function.csproj" />
+  </ItemGroup>
+</Project>

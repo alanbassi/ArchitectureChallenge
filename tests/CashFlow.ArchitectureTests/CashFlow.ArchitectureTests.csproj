@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\02.Application\CashFlow.Ledger.Application\CashFlow.Ledger.Application.csproj" />
+    <ProjectReference Include="..\..\src\02.Application\CashFlow.Balance.Application\CashFlow.Balance.Application.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,156 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A0010000-0000-0000-0000-000000000001}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Presentation", "01.Presentation", "{A0010000-0000-0000-0000-000000000004}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Application", "02.Application", "{A0010000-0000-0000-0000-000000000005}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Domain", "03.Domain", "{A0010000-0000-0000-0000-000000000006}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Infrastructure", "04.Infrastructure", "{A0010000-0000-0000-0000-000000000007}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.Functions", "05.Functions", "{A0010000-0000-0000-0000-000000000008}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A0010000-0000-0000-0000-000000000002}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A0010000-0000-0000-0000-000000000003}"
+	ProjectSection(SolutionItems) = preProject
+		AGENTS.md = AGENTS.md
+		docs\arquitetura-backend.md = docs\arquitetura-backend.md
+		docs\plano-execucao-backend.md = docs\plano-execucao-backend.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.SharedKernel", "src\03.Domain\CashFlow.SharedKernel\CashFlow.SharedKernel.csproj", "{A0010000-0000-0000-0000-000000000102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Ledger.Domain", "src\03.Domain\CashFlow.Ledger.Domain\CashFlow.Ledger.Domain.csproj", "{A0010000-0000-0000-0000-000000000103}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Ledger.Application", "src\02.Application\CashFlow.Ledger.Application\CashFlow.Ledger.Application.csproj", "{A0010000-0000-0000-0000-000000000104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Ledger.Infrastructure", "src\04.Infrastructure\CashFlow.Ledger.Infrastructure\CashFlow.Ledger.Infrastructure.csproj", "{A0010000-0000-0000-0000-000000000105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Ledger.Api", "src\01.Presentation\CashFlow.Ledger.Api\CashFlow.Ledger.Api.csproj", "{A0010000-0000-0000-0000-000000000106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Balance.Domain", "src\03.Domain\CashFlow.Balance.Domain\CashFlow.Balance.Domain.csproj", "{A0010000-0000-0000-0000-000000000107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Balance.Application", "src\02.Application\CashFlow.Balance.Application\CashFlow.Balance.Application.csproj", "{A0010000-0000-0000-0000-000000000108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Balance.Infrastructure", "src\04.Infrastructure\CashFlow.Balance.Infrastructure\CashFlow.Balance.Infrastructure.csproj", "{A0010000-0000-0000-0000-000000000109}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Balance.Api", "src\01.Presentation\CashFlow.Balance.Api\CashFlow.Balance.Api.csproj", "{A0010000-0000-0000-0000-00000000010A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Consolidation.Function", "src\05.Functions\CashFlow.Consolidation.Function\CashFlow.Consolidation.Function.csproj", "{A0010000-0000-0000-0000-00000000010B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Ledger.UnitTests", "tests\CashFlow.Ledger.UnitTests\CashFlow.Ledger.UnitTests.csproj", "{A0010000-0000-0000-0000-00000000010E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Ledger.IntegrationTests", "tests\CashFlow.Ledger.IntegrationTests\CashFlow.Ledger.IntegrationTests.csproj", "{A0010000-0000-0000-0000-00000000010F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Balance.IntegrationTests", "tests\CashFlow.Balance.IntegrationTests\CashFlow.Balance.IntegrationTests.csproj", "{A0010000-0000-0000-0000-000000000110}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Consolidation.IntegrationTests", "tests\CashFlow.Consolidation.IntegrationTests\CashFlow.Consolidation.IntegrationTests.csproj", "{A0010000-0000-0000-0000-000000000111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.ArchitectureTests", "tests\CashFlow.ArchitectureTests\CashFlow.ArchitectureTests.csproj", "{A0010000-0000-0000-0000-000000000112}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0010000-0000-0000-0000-000000000102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-00000000010F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-00000000010F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0010000-0000-0000-0000-000000000112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0010000-0000-0000-0000-000000000112}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A0010000-0000-0000-0000-000000000004} = {A0010000-0000-0000-0000-000000000001}
+		{A0010000-0000-0000-0000-000000000005} = {A0010000-0000-0000-0000-000000000001}
+		{A0010000-0000-0000-0000-000000000006} = {A0010000-0000-0000-0000-000000000001}
+		{A0010000-0000-0000-0000-000000000007} = {A0010000-0000-0000-0000-000000000001}
+		{A0010000-0000-0000-0000-000000000008} = {A0010000-0000-0000-0000-000000000001}
+		{A0010000-0000-0000-0000-000000000102} = {A0010000-0000-0000-0000-000000000006}
+		{A0010000-0000-0000-0000-000000000103} = {A0010000-0000-0000-0000-000000000006}
+		{A0010000-0000-0000-0000-000000000104} = {A0010000-0000-0000-0000-000000000005}
+		{A0010000-0000-0000-0000-000000000105} = {A0010000-0000-0000-0000-000000000007}
+		{A0010000-0000-0000-0000-000000000106} = {A0010000-0000-0000-0000-000000000004}
+		{A0010000-0000-0000-0000-000000000107} = {A0010000-0000-0000-0000-000000000006}
+		{A0010000-0000-0000-0000-000000000108} = {A0010000-0000-0000-0000-000000000005}
+		{A0010000-0000-0000-0000-000000000109} = {A0010000-0000-0000-0000-000000000007}
+		{A0010000-0000-0000-0000-00000000010A} = {A0010000-0000-0000-0000-000000000004}
+		{A0010000-0000-0000-0000-00000000010B} = {A0010000-0000-0000-0000-000000000008}
+		{A0010000-0000-0000-0000-00000000010E} = {A0010000-0000-0000-0000-000000000002}
+		{A0010000-0000-0000-0000-00000000010F} = {A0010000-0000-0000-0000-000000000002}
+		{A0010000-0000-0000-0000-000000000110} = {A0010000-0000-0000-0000-000000000002}
+		{A0010000-0000-0000-0000-000000000111} = {A0010000-0000-0000-0000-000000000002}
+		{A0010000-0000-0000-0000-000000000112} = {A0010000-0000-0000-0000-000000000002}
+	EndGlobalSection
+EndGlobal

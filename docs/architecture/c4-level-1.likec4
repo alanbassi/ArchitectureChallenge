@@ -1,0 +1,247 @@
+// Modelo C4 - Nivel 1: Contexto do Sistema
+// Fonte: desafio-arquiteto-solucoes-jan25.pdf
+
+specification {
+  element person {
+    style {
+      shape person
+    }
+  }
+
+  element softwareSystem {
+    style {
+      shape rectangle
+      color muted
+    }
+  }
+
+  element container {
+    style {
+      shape rectangle
+    }
+  }
+
+  element component {
+    style {
+      shape rectangle
+    }
+  }
+
+  element frontend {
+    style {
+      shape browser
+      color green
+      icon tech:react
+    }
+  }
+
+  element queue {
+    style {
+      shape queue
+    }
+  }
+
+  element database {
+    style {
+      shape cylinder
+    }
+  }
+
+  element identityProvider {
+    style {
+      shape rectangle
+      color blue
+      icon azure:entra-id-protection
+    }
+  }
+
+  element apiGateway {
+    style {
+      shape rectangle
+      color blue
+      icon azure:api-management-services
+    }
+  }
+
+}
+
+model {
+  merchant = person 'Comerciante' {
+    description 'Usuario de negocio que precisa controlar o fluxo de caixa com lancamentos de debito e credito.'
+  }
+
+  entraId = identityProvider 'Microsoft Entra ID' {
+    description 'Provedor de identidade que autentica o comerciante e emite access token JWT. Antigo Azure AD.'
+    technology 'Microsoft Entra ID'
+    link https://learn.microsoft.com/en-us/entra/identity-platform/ 'Microsoft identity platform'
+  }
+
+  cashFlowSystem = softwareSystem 'Sistema de Controle de Fluxo de Caixa' {
+    description 'Sistema responsavel pelo controle de lancamentos e pela disponibilizacao do relatorio de saldo consolidado.'
+
+    frontend = frontend 'Front Web' {
+      description 'Interface web do comerciante.'
+      technology 'React'
+    }
+
+    apiGateway = apiGateway 'API Gateway' {
+      description 'Gateway publico que valida JWT, aplica politicas de seguranca e roteia chamadas para as APIs internas.'
+      technology 'Azure API Management'
+      link https://azure.microsoft.com/en-us/products/api-management 'Azure API Management'
+    }
+
+    entryApi = container 'API de Controle de Lancamentos' {
+      description 'Recebe, valida e persiste lancamentos de debito e credito, tratando idempotencia por Idempotency-Key.'
+      technology '.NET'
+      icon tech:dotnet
+      style {
+        color indigo
+      }
+
+      entryController = component 'Controller de Lancamentos' {
+        description 'Expoe endpoints para registrar lancamentos de debito e credito.'
+        technology '.NET'
+      }
+
+      entryValidator = component 'Validador de Lancamento' {
+        description 'Valida regras de entrada antes da persistencia.'
+        technology 'FluentValidation'
+      }
+
+      registerEntryHandler = component 'Command Handler de Registro de Lancamento' {
+        description 'Coordena a gravacao do lancamento e a publicacao do evento.'
+        technology 'Mediator'
+      }
+
+      ledgerRepository = component 'Repositorio Ledger' {
+        description 'Persiste os lancamentos no livro razao transacional.'
+        technology 'EF Core'
+      }
+
+      entryEventPublisher = component 'Publicador de Eventos' {
+        description 'Publica eventos confirmados no Azure Service Bus usando MessageId para evitar mensagens duplicadas.'
+        technology 'Azure.Messaging.ServiceBus'
+      }
+    }
+
+    entryDatabase = database 'Banco de Lancamentos - Ledger' {
+      description 'Armazena os lancamentos financeiros em estrutura Ledger (Livro Razao), preservando o historico transacional.'
+      technology 'Azure SQL Database'
+      icon tech:azure-sql-database
+      link https://azure.microsoft.com/en-us/products/azure-sql/database 'Azure SQL Database'
+      style {
+        color blue
+      }
+    }
+
+    entryEvents = queue 'Fila de Eventos de Lancamento' {
+      description 'Desacopla o controle de lancamentos do processamento do consolidado, usando MessageId para evitar mensagens duplicadas.'
+      technology 'Azure Service Bus'
+      icon azure:azure-service-bus
+      link https://azure.microsoft.com/en-us/products/service-bus 'Azure Service Bus'
+      style {
+        color amber
+      }
+    }
+
+    consolidationWorker = container 'Azure Function de Sincronizacao do Consolidado' {
+      description 'Processa eventos de lancamento e atualiza o saldo consolidado, evitando reprocessamento pelo identificador do evento.'
+      technology 'Azure Functions'
+      icon azure:function-apps
+      style {
+        color indigo
+      }
+
+      eventConsumer = component 'Consumidor de Eventos' {
+        description 'Consome eventos de lancamento a partir do Azure Service Bus.'
+        technology 'Azure.Messaging.ServiceBus'
+      }
+
+      consolidationProcessor = component 'Processador de Consolidado' {
+        description 'Calcula totais de debito, credito e saldo.'
+        technology '.NET'
+      }
+
+      balanceProjector = component 'Projetor de Saldo' {
+        description 'Atualiza o modelo de leitura do saldo consolidado.'
+        technology '.NET'
+      }
+    }
+
+    consolidatedDatabase = database 'Base do Consolidado' {
+      description 'Armazena o saldo consolidado para consulta rapida.'
+      technology 'Azure SQL Database'
+      icon tech:azure-sql-database
+      link https://azure.microsoft.com/en-us/products/azure-sql/database 'Azure SQL Database'
+      style {
+        color blue
+      }
+    }
+
+    reportApi = container 'API de Consulta de Saldo' {
+      description 'Disponibiliza o relatorio de saldo consolidado ao comerciante.'
+      technology '.NET'
+      icon tech:dotnet
+      style {
+        color indigo
+      }
+
+      balanceController = component 'Controller de Saldo' {
+        description 'Expoe endpoint para consulta do saldo consolidado.'
+        technology '.NET'
+      }
+
+      balanceQueryHandler = component 'Query Handler de Consulta de Saldo' {
+        description 'Coordena a leitura do saldo consolidado.'
+        technology 'Mediator'
+      }
+
+      consolidatedReadRepository = component 'Repositorio de Leitura' {
+        description 'Le o modelo consolidado de saldo.'
+        technology 'EF Core'
+      }
+    }
+
+    frontend -> apiGateway 'Chama APIs com Bearer token'
+    apiGateway -> entryApi 'Roteia /lancamentos'
+    apiGateway -> reportApi 'Roteia /saldo'
+    apiGateway -> entraId 'Valida JWT'
+    entryApi -> entryDatabase 'Persiste lancamentos'
+    entryApi -> entryEvents 'Publica evento de lancamento confirmado'
+    entryEvents -> consolidationWorker 'Entrega eventos para consolidacao'
+    consolidationWorker -> consolidatedDatabase 'Atualiza saldo consolidado'
+    reportApi -> consolidatedDatabase 'Le saldo consolidado'
+
+    apiGateway -> entryApi.entryController 'Encaminha comando de lancamento autorizado'
+    entryApi.entryController -> entryApi.entryValidator 'Valida entrada'
+    entryApi.entryController -> entryApi.registerEntryHandler 'Executa comando'
+    entryApi.registerEntryHandler -> entryApi.ledgerRepository 'Persiste lancamento'
+    entryApi.ledgerRepository -> entryDatabase 'Grava no Ledger'
+    entryApi.registerEntryHandler -> entryApi.entryEventPublisher 'Solicita publicacao'
+    entryApi.entryEventPublisher -> entryEvents 'Publica LancamentoRegistrado'
+
+    entryEvents -> consolidationWorker.eventConsumer 'Entrega evento'
+    consolidationWorker.eventConsumer -> consolidationWorker.consolidationProcessor 'Processa evento'
+    consolidationWorker.consolidationProcessor -> consolidationWorker.balanceProjector 'Gera projecao'
+    consolidationWorker.balanceProjector -> consolidatedDatabase 'Atualiza read model'
+
+    apiGateway -> reportApi.balanceController 'Encaminha consulta de saldo autorizada'
+    reportApi.balanceController -> reportApi.balanceQueryHandler 'Executa consulta'
+    reportApi.balanceQueryHandler -> reportApi.consolidatedReadRepository 'Le consolidado'
+    reportApi.consolidatedReadRepository -> consolidatedDatabase 'Consulta read model'
+  }
+
+  merchant -> cashFlowSystem 'Registra lancamentos de debito e credito, e consulta o relatorio de saldo consolidado'
+  merchant -> cashFlowSystem.frontend 'Usa a interface web'
+  cashFlowSystem.frontend -> entraId 'Login e obtencao de access token'
+  cashFlowSystem.frontend -> cashFlowSystem.apiGateway 'Chama com Bearer token audience api://cash-flow-api'
+}
+
+views {
+  view index {
+    title 'C4 Nivel 1 - Contexto do Sistema'
+    include merchant
+    include cashFlowSystem
+    include entraId
+  }
+}

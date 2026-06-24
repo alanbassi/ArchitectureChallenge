@@ -1,0 +1,31 @@
+// Modelo C4 - Nivel 3: Componentes
+// Fonte: desafio-arquiteto-solucoes-jan25.pdf
+
+views {
+  view entryApiComponents of cashFlowSystem.entryApi {
+    title 'C4 Nivel 3 - Componentes da API de Controle de Lancamentos'
+
+    include cashFlowSystem.frontend
+    include cashFlowSystem.apiGateway
+    include *
+    include cashFlowSystem.entryDatabase
+    include cashFlowSystem.entryEvents
+  }
+
+  view consolidationJobComponents of cashFlowSystem.consolidationWorker {
+    title 'C4 Nivel 3 - Componentes da Azure Function de Sincronizacao do Consolidado'
+
+    include cashFlowSystem.entryEvents
+    include *
+    include cashFlowSystem.consolidatedDatabase
+  }
+
+  view reportApiComponents of cashFlowSystem.reportApi {
+    title 'C4 Nivel 3 - Componentes da API de Consulta de Saldo'
+
+    include cashFlowSystem.frontend
+    include cashFlowSystem.apiGateway
+    include *
+    include cashFlowSystem.consolidatedDatabase
+  }
+}

@@ -1,0 +1,16 @@
+<policies>
+  <inbound>
+    <base />
+    <set-header name="x-correlation-id" exists-action="skip">
+      <value>@(context.RequestId)</value>
+    </set-header>
+    <rate-limit-by-key calls="50" renewal-period="1" counter-key="@(context.Subscription?.Key ?? context.Request.IpAddress)" />
+    <validate-content unspecified-content-type-action="ignore" max-size="1048576" size-exceeded-action="prevent">
+      <content type="application/json" validate-as="json" action="prevent" />
+    </validate-content>
+    <check-header name="Authorization" failed-check-httpcode="401" failed-check-error-message="Authorization header is required." ignore-case="true" />
+  </inbound>
+  <backend><base /></backend>
+  <outbound><base /></outbound>
+  <on-error><base /></on-error>
+</policies>

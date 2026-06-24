@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="10.0.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+    <ProjectReference Include="..\..\02.Application\CashFlow.Ledger.Application\CashFlow.Ledger.Application.csproj" />
+    <ProjectReference Include="..\..\04.Infrastructure\CashFlow.Ledger.Infrastructure\CashFlow.Ledger.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

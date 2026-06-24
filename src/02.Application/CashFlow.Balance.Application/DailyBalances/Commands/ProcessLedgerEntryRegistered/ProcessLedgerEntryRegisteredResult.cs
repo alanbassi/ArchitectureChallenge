@@ -1,0 +1,3 @@
+namespace CashFlow.Balance.Application.DailyBalances.Commands.ProcessLedgerEntryRegistered;
+
+public sealed record ProcessLedgerEntryRegisteredResult(bool WasAlreadyProcessed);

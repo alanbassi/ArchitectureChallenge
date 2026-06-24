@@ -1,0 +1,30 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+
+## IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+
+## NuGet
+*.nupkg
+packages/
+
+## OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+## LikeC4 generated output
+docs/architecture/out/
+
+## draw.io backup files
+.$*.drawio.bkp

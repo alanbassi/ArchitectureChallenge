@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.9" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.7.0" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\01.Presentation\CashFlow.Balance.Api\CashFlow.Balance.Api.csproj" />
+    <ProjectReference Include="..\..\src\02.Application\CashFlow.Balance.Application\CashFlow.Balance.Application.csproj" />
+    <ProjectReference Include="..\..\src\04.Infrastructure\CashFlow.Balance.Infrastructure\CashFlow.Balance.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

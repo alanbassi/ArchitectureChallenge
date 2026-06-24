@@ -1,0 +1,12 @@
+// Modelo C4 - Nivel 2: Containers
+// Fonte: desafio-arquiteto-solucoes-jan25.pdf
+
+views {
+  view containers of cashFlowSystem {
+    title 'C4 Nivel 2 - Containers do Sistema de Controle de Fluxo de Caixa'
+
+    include merchant
+    include entraId
+    include *
+  }
+}
