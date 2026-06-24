@@ -10,12 +10,23 @@ O sistema é composto por Ledger API, Balance API, Azure Service Bus, Function d
 
 O registro do lançamento é síncrono. A consolidação do saldo é assíncrona, com consistência eventual.
 
+### Visão geral (Containers)
+
 ![Containers](docs/images/containers.png)
+
+### Ledger API (Componentes)
+
 ![Ledger](docs/images/entryApiComponents.png)
+
+### Consolidação (Componentes)
+
 ![Consolidação](docs/images/consolidationJobComponents.png)
+
+### Balance API (Componentes)
+
 ![Balance](docs/images/reportApiComponents.png)
 
-As fontes LikeC4 estão em `docs/architecture`. Para exportar os PNGs:
+Os diagramas são mantidos como código usando [LikeC4](https://likec4.dev) (Architecture as Code). As fontes estão em `docs/architecture`. Para exportar os PNGs:
 
 ```bash
 npx likec4 export png docs/architecture --outdir docs/architecture/out/png --light
