@@ -18,10 +18,6 @@ O registro do lançamento é síncrono. A consolidação do saldo é assíncrona
 
 ![Ledger](docs/images/entryApiComponents.png)
 
-### Consolidação (Componentes)
-
-![Consolidação](docs/images/consolidationJobComponents.png)
-
 ### Balance API (Componentes)
 
 ![Balance](docs/images/reportApiComponents.png)
